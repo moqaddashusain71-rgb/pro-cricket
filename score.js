@@ -1,4 +1,4 @@
-const API="https://api.cricapi.com/v1/currentMatches?apikey=YOUR_API_KEY";
+const API="https://api.cricapi.com/v1/currentMatches?apikey=00279dc951144e43b8413ac3ce36137e";
 
 async function loadMatches(){
 
@@ -11,17 +11,23 @@ const container=document.getElementById("matches");
 
 container.innerHTML="";
 
-matches.forEach(match=>{
+matches.forEach(m=>{
 
-const div=document.createElement("div");
+container.innerHTML+=`
 
-div.innerHTML=`
-<h3>${match.name}</h3>
-<p>${match.status}</p>
-<hr>
+<div class="card">
+
+<h3>${m.name}</h3>
+
+<p>${m.status}</p>
+
+<a href="match.html?id=${m.id}">
+<button>Match Details</button>
+</a>
+
+</div>
+
 `;
-
-container.appendChild(div);
 
 });
 
@@ -29,4 +35,4 @@ container.appendChild(div);
 
 loadMatches();
 
-setInterval(loadMatches,30000);
+setInterval(loadMatches,15000);
